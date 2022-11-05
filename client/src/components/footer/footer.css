@@ -1,0 +1,18 @@
+.footer{
+    text-align: center;
+    padding: 20px;
+    background-color: steelblue;
+    margin-top: column;
+    
+}
+.body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width: 600px) {
+  .body {
+    width: 100%;
+    display: block;
+  }
+}
