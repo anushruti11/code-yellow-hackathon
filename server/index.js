@@ -14,7 +14,7 @@ const configExpenses = {
   method: 'get',
   url: 'https://secure.splitwise.com/api/v3.0/get_expenses',
   headers: {
-    Authorization: 'Bearer kWBPEcnlKIltB8kpT10ez8ZEnckzVHeW5LrcrCJv',
+    Authorization: 'Bearer by9mfztomnEMdEnZb7cpOtulc0Er6YtGGDbbCscH',
   },
 };
 
@@ -22,7 +22,7 @@ const configFriends = {
   method: 'get',
   url: 'https://secure.splitwise.com/api/v3.0/get_friends',
   headers: {
-    Authorization: 'Bearer kWBPEcnlKIltB8kpT10ez8ZEnckzVHeW5LrcrCJv',
+    Authorization: 'Bearer by9mfztomnEMdEnZb7cpOtulc0Er6YtGGDbbCscH',
   },
 };
 
@@ -30,7 +30,7 @@ const configUser = {
   method: 'get',
   url: 'https://secure.splitwise.com/api/v3.0/get_current_user',
   headers: {
-    Authorization: 'Bearer kWBPEcnlKIltB8kpT10ez8ZEnckzVHeW5LrcrCJv',
+    Authorization: 'Bearer by9mfztomnEMdEnZb7cpOtulc0Er6YtGGDbbCscH',
   },
 };
 
