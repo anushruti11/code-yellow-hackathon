@@ -1,17 +1,84 @@
 const express = require('express');
 const app = express();
+const axios = require('axios');
 const mongoose = require('mongoose');
 const user = require('./models/user');
 const cors = require('cors');
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
+const configExpenses = {
+  method: 'get',
+  url: 'https://secure.splitwise.com/api/v3.0/get_expenses',
+  headers: {
+    Authorization: 'Bearer kWBPEcnlKIltB8kpT10ez8ZEnckzVHeW5LrcrCJv',
+  },
+};
+
+const configFriends = {
+  method: 'get',
+  url: 'https://secure.splitwise.com/api/v3.0/get_friends',
+  headers: {
+    Authorization: 'Bearer kWBPEcnlKIltB8kpT10ez8ZEnckzVHeW5LrcrCJv',
+  },
+};
+
+const configUser = {
+  method: 'get',
+  url: 'https://secure.splitwise.com/api/v3.0/get_current_user',
+  headers: {
+    Authorization: 'Bearer kWBPEcnlKIltB8kpT10ez8ZEnckzVHeW5LrcrCJv',
+  },
+};
 
 const PORT = process.env.PORT || 5000;
 
+// default
 app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
+// to get expenses list
+app.get('/expenses', (req, res) => {
+  axios(configExpenses)
+    .then((data) => {
+      res.send(data.data);
+    })
+    .catch((err) => {
+      res.statusCode = 400;
+      res.send({ message: err });
+    });
+});
+
+// to get friends list
+app.get('/friends', (req, res) => {
+  axios(configFriends)
+    .then((data) => {
+      res.send(data.data);
+    })
+    .catch((err) => {
+      res.statusCode = 400;
+      res.send({ message: err });
+    });
+});
+
+// get current user
+app.get('/get_user', (req, res) => {
+  axios(configUser)
+    .then((data) => {
+      console.log(data);
+      res.send(data.data);
+    })
+    .catch((err) => {
+      res.statusCode = 400;
+      res.send({ message: err });
+    });
+});
+
+// to register
 app.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
